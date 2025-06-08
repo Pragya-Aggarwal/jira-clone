@@ -23,7 +23,7 @@ A modern, responsive Jira dashboard built with React, TypeScript, and Chakra UI.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/pragya-aggarwal/jira-dashboard.git
+git clone https://github.com/pragya-aggarwal/jira-clone.git
 cd jira-dashboard
 ```
 
