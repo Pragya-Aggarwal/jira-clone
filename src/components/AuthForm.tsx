@@ -8,13 +8,11 @@ import {
     InputGroup,
     InputRightElement,
     Stack,
-    useToast,
     Tab,
     TabList,
     TabPanel,
     TabPanels,
     Tabs,
-    Text,
     FormErrorMessage
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
@@ -34,7 +32,6 @@ const AuthForm = ({ onCredentialsSubmit, onJiraSubmit, isLoading }: {
         password: '',
         jiraToken: ''
     });
-    const toast = useToast();
 
     const validateEmail = (email: string) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

@@ -114,7 +114,7 @@ export const TaskCard = ({ task, onUpdate }: TaskCardProps) => {
             }
 
             if (Object.keys(updates).length > 0) {
-                const updatedTask = await onUpdate(task.id, updates);
+                await onUpdate(task.id, updates);
                 toast({
                     title: 'Task updated',
                     status: 'success',

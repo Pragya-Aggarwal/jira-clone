@@ -17,7 +17,7 @@ import {
     InputGroup,
     InputLeftElement,
 } from "@chakra-ui/react";
-import { HamburgerIcon, MoonIcon, SunIcon, SearchIcon } from "@chakra-ui/icons";
+import { MoonIcon, SunIcon, SearchIcon } from "@chakra-ui/icons";
 import type { FC } from "react";
 import { useAuth } from "../context/AuthContext";
 

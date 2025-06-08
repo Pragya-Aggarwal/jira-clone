@@ -63,7 +63,7 @@ const mockTaskDeatils: Task[] = [
     }
 ];
 
-export const getAssignedTasks = async (domain: string, token: string): Promise<{ issues: Task[] }> => {
+export const getAssignedTasks = async () => {
     return DummyApiCall({
         issues: [
 
@@ -352,8 +352,6 @@ export const getAssignedTasks = async (domain: string, token: string): Promise<{
 };
 
 export const updateTask = async (
-    domain: string,
-    token: string,
     taskId: string,
     updates: {
         summary?: string;

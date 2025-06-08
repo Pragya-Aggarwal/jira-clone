@@ -49,8 +49,8 @@ The application will be available at `http://localhost:5173`
      - Password: pass@123
 
 2. Jira PAT:
-   - Use your email
-   - Enter your Jira PAT (starts with "jira_pat_")
+   - email- main@gmail.com
+   - Jira PAT- jira_Details
 
 ### Dashboard Features
 

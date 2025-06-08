@@ -10,18 +10,15 @@ import {
     Text,
     Spinner,
     Select,
-    useToast,
     Container,
     SimpleGrid,
     Card,
     CardHeader,
     CardBody,
     Divider,
-    ButtonGroup,
-    Button,
     useColorModeValue
 } from "@chakra-ui/react";
-import { CalendarIcon, SearchIcon, AtSignIcon, ViewIcon } from "@chakra-ui/icons";
+import { CalendarIcon, SearchIcon, AtSignIcon } from "@chakra-ui/icons";
 import { FaRocket, FaTasks, FaFilter } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { getAssignedTasks, updateTask } from "../../services/jiraApi";
@@ -60,35 +57,7 @@ type GroupedTasks = Record<string, Task[]>;
 
 type SortType = "default" | "projects" | "task";
 
-const getStatusColor = (status: string): string => {
-    switch (status) {
-        case "Done":
-            return "green";
-        case "In Review":
-            return "teal";
-        case "To Do":
-            return "orange";
-        case "In Progress":
-            return "yellow";
-        default:
-            return "gray";
-    }
-};
 
-const getPriorityColor = (status: string): string => {
-    switch (status) {
-        case "High":
-            return "orange";
-        case "Medium":
-            return "yellow";
-        case "Low":
-            return "green";
-        case "Critical":
-            return "red";
-        default:
-            return "gray";
-    }
-};
 
 const getPriorityValue = (priority: string): number => {
     switch (priority.toLowerCase()) {
@@ -114,7 +83,6 @@ const Dashboard = () => {
     const [toDate, setToDate] = useState<string>("");
     const [assigneeSearch, setAssigneeSearch] = useState<string>("");
     const [prioritySort, setPrioritySort] = useState<SortType>("default");
-    const toast = useToast();
 
     const bgColor = useColorModeValue("gray.50", "gray.800");
     const cardBg = useColorModeValue("white", "gray.700");
@@ -125,7 +93,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         const fetchTasks = async () => {
-            const res = await getAssignedTasks("main@gmail.com", "token");
+            const res = await getAssignedTasks();
             setTasks(res.issues);
             setLoading(false);
         };
@@ -140,7 +108,7 @@ const Dashboard = () => {
         date?: { start: string; end: string };
     }) => {
         try {
-            const updatedTask = await updateTask("main@gmail.com", "token", taskId, updates);
+            const updatedTask = await updateTask(taskId, updates);
             setTasks(prevTasks =>
                 prevTasks.map(task =>
                     task.id === taskId ? updatedTask : task
